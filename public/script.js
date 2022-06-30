@@ -1,30 +1,35 @@
-const linkCopyBox = document.getElementById("link-copy-box");
+const linkCopyArea = document.getElementById("link-copy-area");
 const emailBox = document.getElementById("email-box")
 const linkCopyBtn = document.getElementById("link-copy-btn")
-
-console.log(emailBox)
+const copyIcon = document.getElementById("copy-icon")
 
 
 function getOrigin() {
     return window.location.origin;
 }
 
-const linkBoxPlaceholder = `${getOrigin()}/[email]`
-
-const linkValueWatcher = (event) => {
-    linkCopyBox.setAttribute("placeholder", `${origin}/${event.target.value}`)
+function writeLink(event) {
+    linkCopyArea.innerText = `${getOrigin()}/${event.target.value}`
 }
 
-// const toggleLinkCopied = (event) => {
-//     event.target.classList.toggle("link-copy-icon-cnt")
-//     event.target.classList.toggle("link-copy-success")
-// }
+function copyToClipboard(event) {
+    navigator.clipboard.writeText(linkCopyArea.innerText)
+    copyAnimation()
+}
+
+function copyAnimation() {
+    copyIcon.src = "/assets/checked.gif"
+    setTimeout(() => {
+        copyIcon.src = "/assets/copy-icon.png"
+    }, 1000)
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-    linkCopyBox.setAttribute("placeholder", linkBoxPlaceholder)
+    const linkBoxPlaceholder = `${getOrigin()}/[email]`
+    linkCopyArea.innerText = linkBoxPlaceholder
 })
 
-emailBox.addEventListener("change", linkValueWatcher)
+emailBox.addEventListener("keyup", writeLink)
 
-// linkCopyBtn.addEventListener("click", toggleLinkCopied)
+linkCopyBtn.addEventListener("click", copyToClipboard)
 
