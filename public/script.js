@@ -5,7 +5,7 @@ const copyIcon = document.getElementById("copy-icon")
 
 
 function getOrigin() {
-    return window.location.origin;
+    return window.location.origin.trim();
 }
 
 function writeLink(event) {
