@@ -1,6 +1,7 @@
 const linkCopyArea = document.getElementById("link-copy-area");
 const emailBox = document.getElementById("email-box")
 const linkCopyBtn = document.getElementById("link-copy-btn")
+const linkText = document.getElementById("link-text")
 const copyIcon = document.getElementById("copy-icon")
 
 
@@ -9,11 +10,11 @@ function getOrigin() {
 }
 
 function writeLink(event) {
-    linkCopyArea.innerText = `${getOrigin()}/${event.target.value}`
+    linkText.innerText = `${getOrigin()}/${event.target.value}`
 }
 
-function copyToClipboard(event) {
-    navigator.clipboard.writeText(linkCopyArea.innerText)
+function copyToClipboard() {
+    navigator.clipboard.writeText(linkText.innerText)
     copyAnimation()
 }
 
@@ -25,8 +26,8 @@ function copyAnimation() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const linkBoxPlaceholder = `${getOrigin()}/[email]`
-    linkCopyArea.innerText = linkBoxPlaceholder
+    const linkBoxPlaceholder = `${getOrigin()}/`
+    linkText.innerText = linkBoxPlaceholder
 })
 
 emailBox.addEventListener("keyup", writeLink)
