@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --rationale: "Rationale", sans-serif;
+  --roboto: "Roboto", sans-serif;
+}
+
+body {
+  font-family: var(--roboto);
+}
+
+main {
+  height: 80vh;
+}
+main,
+footer,
+.input-boxes,
+.mail-input-box,
+.link-box {
+  display: flex;
+}
+
+main,
+.input-boxes {
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-boxes {
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  gap: 40px;
+}
+
+.link-box,
+.mail-input-box {
+  width: 50%;
+  min-width: max-content;
+  height: 37px;
+  border-radius: 10px;
+}
+
+.mail-input-box input {
+  padding: 10px;
+  border-color: none;
+}
+
+.mail-input-box input,
+.link-box input {
+  width: 100%;
+  padding: 5px;
+  background-color: rgba(204, 205, 208, 0.58);
+}
+
+.mail-input-box input,
+.mail-input-box input:focus,
+.link-box input,
+.link-box:focus {
+  outline: none;
+  border: none;
+}
+
+.mail-input-icon-cnt,
+.link-copy-icon-cnt {
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: max-content;
+  width: 48px;
+}
+
+.link-copy-icon-cnt:hover {
+  cursor: pointer;
+}
+
+.mail-input-icon-cnt,
+.link-box input {
+  border-radius: 10px 0 0 10px;
+}
+
+.mail-input-box input,
+.link-copy-icon-cnt {
+  border-radius: 0 10px 10px 0;
+}
+
+footer {
+  justify-content: flex-end;
+}
+
+.font-family-rationale {
+  font-family: var(--rationale);
+}
+
+.font-family-roboto {
+  font-family: var(--roboto);
+}
